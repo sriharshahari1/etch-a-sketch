@@ -10,20 +10,23 @@ let baseDiv;
 let newGrid;
 
 //function to show the grid value selected via the slider
-sliderValue.textContent="2x2";
+sliderValue.textContent="5x5";
 slider.onchange=function(){
     container.style.setProperty('grid-template-columns', 'repeat(' + slider.value + ', 1fr)');
     sliderValue.textContent=this.value + 'x' + this.value;
     document.querySelectorAll('.baseElements').forEach(f => f.remove());
     document.querySelectorAll('.newElements').forEach(e => e.remove());
     addGrid();
-
+    let colorBtn=document.querySelectorAll(".btn");
+    colorBtn.forEach(button => {
+            removeActiveStyle(colorBtn);
+    });
 }
 
-//code to create the default 2x2 grid
-container.style.setProperty('grid-template-columns', 'repeat(2, 1fr)');
-for(i=1;i<=2;i++){
-    for(j=1;j<=2;j++){
+//code to create the default 5x5 grid
+container.style.setProperty('grid-template-columns', 'repeat(5, 1fr)');
+for(i=1;i<=5;i++){
+    for(j=1;j<=5;j++){
         baseDiv=document.createElement("div");
         baseDiv.className="baseElements";
         container.appendChild(baseDiv);
@@ -45,29 +48,42 @@ function addGrid() {
 
 //function to link color buttons to js and giving each button their values
 function chooseColor(){
-    const colorBtn=document.querySelectorAll(".btn");
+    let colorBtn=document.querySelectorAll(".btn");
     colorBtn.forEach(button => {
         button.addEventListener('click',()=>{
+            removeActiveStyle(colorBtn);
             if(button.classList.contains('black')){
+                colorBtn[0].classList.add('active');
                 generateColors('black','#000000');
             }
             else if(button.classList.contains('warm')){
+                colorBtn[1].classList.add('active');
                 generateColors('warm',['#470D21','#9C0F48','#D67D3E','#F9E4D4']);
             }
             else if(button.classList.contains('cold')){
+                colorBtn[2].classList.add('active');
                 generateColors('cold',['#B3E8E5','#82DBD8','#3BACB6','#2F8F9D']);
             }
             else if(button.classList.contains('rgb')){
-                generateColors('rgb',['#3C9EE7', '#E7993C','#E73C99', '#3CE746', '#E7993C']);
+                colorBtn[3].classList.add('active');
+                generateColors('rgb',['#187498', '#36AE7C','#F9D923', '#EB5353', '#FF6FB5']);
             }
             else if(button.classList.contains('eraser')){
+                colorBtn[4].classList.add('active');
                 generateColors('eraser','#ffffff');
             }
-        })
+        });
     });
 }
 
 chooseColor();
+
+//function from removing style on clicking other button
+function removeActiveStyle(buttons) {
+    buttons.forEach((button)=>{
+        button.classList.remove('active');
+    })
+}
 
 
 //function to generate the colors when you hover

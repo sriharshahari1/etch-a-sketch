@@ -5,18 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-sketch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Etch-a-sketch</h1>
-    <input type="range" min="2" max="64" id="slider" value="2">
-    <button class="black btn">black</button>
-    <button class="warm btn">warm</button>
-    <button class="cold btn">cold</button>
-    <button class="rgb btn">rgb</button>
-    <button class="eraser btn">eraser</button>
-    <div id="sliderValue"></div>
-    <div id="container"></div>
+    <div class="header">
+        <h1>Etch-a-sketch</h1>
+    </div>
+    <div class="inputSlider">
+        <input type="range" min="2" max="64" id="slider" value="5">
+        <div id="sliderValue"></div>
+    </div>
+    <div class="colorButtons">
+        Choose your color:
+        <button class="black btn">black</button>
+        <button class="warm btn">warm</button>
+        <button class="cold btn">cold</button>
+        <button class="rgb btn">random</button>
+        <button class="eraser btn">eraser</button>
+    </div>
+    <div id="gridcontainer">
+        <div id="container"></div>
+    </div>
+    <div class="footer"><pre>Made by: </pre>
+        <a href="https://github.com/sriharshahari1"><i class="fa fa-github" style="font-size: 24px;"></i> Sri Harsha Hari</a>
+    </dic>
     <script src="script.js"></script>
 </body>
 </html>
