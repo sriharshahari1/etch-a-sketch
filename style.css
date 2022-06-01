@@ -14,8 +14,9 @@ body {
     width: 720px;
     height: 720px;
     background-color:black;
+    border: 1px solid black;
 }
 
 #container div{
-    background-color: antiquewhite;
+    background-color: white;
 }
